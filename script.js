@@ -19,7 +19,7 @@ const context = canvas.getContext("2d");
 let currentSize = 10;
 let bucketColor = "#FFFFFF";
 let currentColor = "#A51DAB";
-// let isEraser = false;
+let isEraser = false;
 // let isMouseDown = false;
 // let drawnArray = [];
 
@@ -34,9 +34,10 @@ let currentColor = "#A51DAB";
 // });
 
 // Setting Brush Color
-// brushColorBtn.addEventListener('change', () => {
-
-// });
+brushColorBtn.addEventListener("change", () => {
+  isEraser = false;
+  currentColor = `#${brushColorBtn.value}`;
+});
 
 // Setting Background Color
 bucketColorBtn.addEventListener("change", () => {
