@@ -51,7 +51,7 @@ bucketColorBtn.addEventListener("change", () => {
   restoreCanvas();
 });
 
-// // Eraser
+// Eraser
 eraser.addEventListener("click", () => {
   isEraser = true;
   brushIcon.style.color = "white";
@@ -61,7 +61,7 @@ eraser.addEventListener("click", () => {
   currentSize = 50;
 });
 
-// // Switch back to Brush
+// Switch back to Brush
 function switchToBrush() {
   isEraser = false;
   activeToolEl.textContent = "Brush";
@@ -165,7 +165,7 @@ canvas.addEventListener("mouseup", () => {
   isMouseDown = false;
 });
 
-// // Save to Local Storage
+// Save to Local Storage
 saveStorageBtn.addEventListener("click", () => {
   localStorage.setItem("savedCanvas", JSON.stringify(drawnArray));
   // Active Tool
@@ -173,7 +173,7 @@ saveStorageBtn.addEventListener("click", () => {
   setTimeout(switchToBrush, 1500);
 });
 
-// // Load from Local Storage
+// Load from Local Storage
 loadStorageBtn.addEventListener("click", () => {
   if (localStorage.getItem("savedCanvas")) {
     drawnArray = JSON.parse(localStorage.getItem("savedCanvas"));
@@ -186,7 +186,7 @@ loadStorageBtn.addEventListener("click", () => {
   }
 });
 
-// // Clear Local Storage
+// Clear Local Storage
 clearStorageBtn.addEventListener("click", () => {
   localStorage.removeItem("savedCanvas");
   // Active Tool
@@ -194,13 +194,14 @@ clearStorageBtn.addEventListener("click", () => {
   setTimeout(switchToBrush, 1500);
 });
 
-// // Download Image
-// downloadBtn.addEventListener('click', () => {
-
-//   // Active Tool
-//   activeToolEl.textContent = 'Image File Saved';
-//   setTimeout(switchToBrush, 1500);
-// });
+// Download Image
+downloadBtn.addEventListener("click", () => {
+  downloadBtn.href = canvas.toDataURL("image/jpeg", 1);
+  downloadBtn.download = "paint-example.jpeg";
+  // Active Tool
+  activeToolEl.textContent = "Image File Saved";
+  setTimeout(switchToBrush, 1500);
+});
 
 // // Event Listener
 brushIcon.addEventListener("click", switchToBrush);
